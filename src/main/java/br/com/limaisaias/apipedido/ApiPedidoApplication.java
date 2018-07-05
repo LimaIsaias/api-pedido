@@ -8,24 +8,34 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import br.com.limaisaias.apipedido.domains.Categoria;
+import br.com.limaisaias.apipedido.domains.Produto;
 import br.com.limaisaias.apipedido.repository.CategoriaRepository;
 
+/**
+ * @author LimaI
+ ***/
 @SpringBootApplication
-public class ApiPedidoApplication implements CommandLineRunner{
+public class ApiPedidoApplication implements CommandLineRunner {
 
 	@Autowired
 	private CategoriaRepository repository;
-	
-	public static void main(String[] args) {
+
+	public static void main(final String[] args) {
 		SpringApplication.run(ApiPedidoApplication.class, args);
 	}
 
 	@Override
-	public void run(String... args) throws Exception {
+	public void run(final String... args) throws Exception {
 
-		Categoria categoria1 = new Categoria(null, "Informatica");
-		Categoria categoria2 = new Categoria(null, "Escritorio");
-		
-		repository.saveAll(Arrays.asList(categoria1,categoria2));
+		final Categoria categoria1 = new Categoria(null, "Informatica");
+		final Categoria categoria2 = new Categoria(null, "Escritorio");
+
+		final Produto produto1 = new Produto(null, "Computador", 2000.00);
+		final Produto produto2 = new Produto(null, "Impressora", 1000.00);
+		final Produto produto3 = new Produto(null, "Mouse", 10.00);
+
+		categoria1.getProdutos().addAll(Arrays.asList(produto1, produto2));
+		categoria2.getProdutos().add(produto3);
+		repository.saveAll(Arrays.asList(categoria1, categoria2));
 	}
 }

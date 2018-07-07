@@ -34,8 +34,8 @@ public class ApiPedidoApplication implements CommandLineRunner {
 		final Produto produto2 = new Produto(null, "Impressora", 1000.00);
 		final Produto produto3 = new Produto(null, "Mouse", 10.00);
 
-		categoria1.getProdutos().addAll(Arrays.asList(produto1, produto2));
-		categoria2.getProdutos().add(produto3);
+		categoria1.getProdutos().addAll(Arrays.asList(produto1, produto2, produto3));
+		categoria2.getProdutos().add(produto2);
 		repository.saveAll(Arrays.asList(categoria1, categoria2));
 	}
 }

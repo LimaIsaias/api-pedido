@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.limaisaias.apipedido.domains.Categoria;
 import br.com.limaisaias.apipedido.repository.CategoriaRepository;
+import br.com.limaisaias.apipedido.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class CategoriaService {
@@ -22,9 +23,9 @@ public class CategoriaService {
 		return repository.findAll();
 	}
 
-	public Categoria findByID(Integer id) {
+	public Categoria findByID(Integer id) throws ObjectNotFoundException {
 		Optional<Categoria> retorno = repository.findById(id);
-		return retorno.orElse(null);
+		return retorno.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado ! Id:"+ id +" Tipo:"+Categoria.class.getName()));
 	}
 
 }

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,8 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -24,6 +25,7 @@ import lombok.ToString;
 @ToString
 @Getter
 @Setter
+@Table(name = "produto", uniqueConstraints = @UniqueConstraint(columnNames = { "id" }, name = "produto_id"))
 public class Produto implements Serializable {
 
 	private static final long serialVersionUID = 8244679166797565434L;
@@ -36,9 +38,9 @@ public class Produto implements Serializable {
 
 	private Double preco;
 
-//	@JsonBackReference
-	@ManyToMany
-	@JoinTable(name = "produto_categoria", joinColumns = @JoinColumn(name = "produto_id"), inverseJoinColumns = @JoinColumn(name = "categoria_id"))
+	// @JsonBackReference
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "PRODUTO_CATEGORIA", joinColumns = @JoinColumn(name = "produto_id"), inverseJoinColumns = @JoinColumn(name = "categoria_id"))
 	private List<Categoria> categorias = new ArrayList<>();
 
 	public Produto() {

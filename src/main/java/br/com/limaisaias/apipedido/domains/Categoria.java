@@ -10,8 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -25,7 +23,6 @@ import lombok.ToString;
 @ToString
 @Getter
 @Setter
-@Table(name = "categoria", uniqueConstraints = @UniqueConstraint(columnNames = { "id" }, name = "categoria_id"))
 public class Categoria implements Serializable {
 
 	private static final long serialVersionUID = 6955446611987775356L;

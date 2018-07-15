@@ -13,8 +13,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
-import org.hibernate.annotations.ForeignKey;
-
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.EqualsAndHashCode;
@@ -27,7 +25,7 @@ import lombok.ToString;
 @ToString
 @Getter
 @Setter
-@Table(name= "categoria", uniqueConstraints = @UniqueConstraint(columnNames = { "id" }, name = "categoria_id"))
+@Table(name = "categoria", uniqueConstraints = @UniqueConstraint(columnNames = { "id" }, name = "categoria_id"))
 public class Categoria implements Serializable {
 
 	private static final long serialVersionUID = 6955446611987775356L;
@@ -38,7 +36,7 @@ public class Categoria implements Serializable {
 
 	private String nome;
 
-	// @JsonManagedReference
+	@JsonManagedReference
 	@ManyToMany(mappedBy = "categorias", cascade = CascadeType.ALL)
 	private List<Produto> produtos = new ArrayList<>();
 

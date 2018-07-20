@@ -6,7 +6,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.limaisaias.apipedido.domains.Categoria;
 import br.com.limaisaias.apipedido.domains.Produto;
 import br.com.limaisaias.apipedido.repository.ProdutoRepository;
 import br.com.limaisaias.apipedido.services.exceptions.ObjectNotFoundException;
@@ -21,7 +20,7 @@ public class ProdutoService {
 		return repository.findAll();
 	}
 
-	public Produto findByID(Integer id) throws ObjectNotFoundException {
+	public Produto findByID(Integer id) {
 		Optional<Produto> retorno = repository.findById(id);
 		return retorno.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado ! Id:"+ id +" Tipo:"+Produto.class.getName()));
 	}

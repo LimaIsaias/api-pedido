@@ -6,13 +6,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import br.com.limaisaias.apipedido.domains.Categoria;
 import br.com.limaisaias.apipedido.domains.Cidade;
+import br.com.limaisaias.apipedido.domains.Cliente;
+import br.com.limaisaias.apipedido.domains.Endereco;
 import br.com.limaisaias.apipedido.domains.Estado;
 import br.com.limaisaias.apipedido.domains.Produto;
+import br.com.limaisaias.apipedido.domains.enums.TipoCliente;
 import br.com.limaisaias.apipedido.repository.CategoriaRepository;
 import br.com.limaisaias.apipedido.repository.CidadeRepository;
+import br.com.limaisaias.apipedido.repository.ClienteRepository;
+import br.com.limaisaias.apipedido.repository.EnderecoRepository;
 import br.com.limaisaias.apipedido.repository.EstadoRepository;
 import br.com.limaisaias.apipedido.repository.ProdutoRepository;
 
@@ -30,6 +36,10 @@ public class ApiPedidoApplication implements CommandLineRunner {
 	private CidadeRepository cidadeRepository;
 	@Autowired
 	private EstadoRepository estadoRepository;
+	@Autowired
+	private ClienteRepository clienteRepository;
+	@Autowired
+	private EnderecoRepository enderecoRepository;
 
 	public static void main(final String[] args) {
 		SpringApplication.run(ApiPedidoApplication.class, args);
@@ -62,6 +72,10 @@ public class ApiPedidoApplication implements CommandLineRunner {
 		Cidade cidade4 = new Cidade(null, "Santos", estado2);
 		Cidade cidade5 = new Cidade(null, "Belo Horizonte", estado3);
 
+		Cliente cliente = new Cliente(null, "Cliente", "Cliente@email.com", "04442332371", TipoCliente.PessoaFisica);
+
+		Endereco endereco = new Endereco(null, "Themberge", "19", "Teste", "60335480", cliente, cidade1);
+		Endereco endereco1 = new Endereco(null, "Themberge", "19", "Teste2", "60335480", cliente, cidade2);
 		// Persistence
 		categoriaRepository.saveAll(Arrays.asList(categoria1, categoria2));
 		categoriaRepository.flush();
@@ -71,6 +85,7 @@ public class ApiPedidoApplication implements CommandLineRunner {
 		estadoRepository.flush();
 		cidadeRepository.saveAll(Arrays.asList(cidade1, cidade2, cidade3, cidade4, cidade5));
 		cidadeRepository.flush();
-
+		enderecoRepository.saveAll(Arrays.asList(endereco, endereco1));
+		enderecoRepository.flush();
 	}
 }

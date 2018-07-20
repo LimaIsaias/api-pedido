@@ -6,12 +6,15 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import br.com.limaisaias.apipedido.domains.enums.TipoCliente;
 import lombok.EqualsAndHashCode;
@@ -41,8 +44,11 @@ public class Cliente implements Serializable {
 	@Enumerated(EnumType.ORDINAL)
 	private TipoCliente tipo;
 
+	@OneToMany(mappedBy = "cliente")
 	private List<Endereco> enderecos = new ArrayList<>();
 
+	@ElementCollection
+	@CollectionTable(name = "telefone")
 	private Set<String> telefones = new HashSet<>();
 
 	public Cliente(Integer id, String nome, String email, String cpfCnpj, TipoCliente tipo) {

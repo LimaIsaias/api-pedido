@@ -15,14 +15,15 @@ public class ProdutoService {
 
 	@Autowired
 	private ProdutoRepository repository;
-	
+
 	public List<Produto> findAll() {
 		return repository.findAll();
 	}
 
 	public Produto findByID(Integer id) {
 		Optional<Produto> retorno = repository.findById(id);
-		return retorno.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado ! Id:"+ id +" Tipo:"+Produto.class.getName()));
+		return retorno.orElseThrow(() -> new ObjectNotFoundException(
+				"Objeto não encontrado ! Id:" + id + " Tipo:" + Produto.class.getName()));
 	}
-	
+
 }

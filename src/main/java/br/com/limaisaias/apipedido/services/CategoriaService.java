@@ -16,9 +16,6 @@ public class CategoriaService {
 	@Autowired
 	private CategoriaRepository repository;
 
-	public CategoriaService() {
-	}
-
 	public List<Categoria> findAll() {
 		return repository.findAll();
 	}

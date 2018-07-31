@@ -20,7 +20,7 @@ public class PedidoService {
 		return repository.findAll();
 	}
 
-	public Pedido findByID(Integer id) throws ObjectNotFoundException {
+	public Pedido find(Integer id) throws ObjectNotFoundException {
 		Optional<Pedido> retorno = repository.findById(id);
 		return retorno.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado ! Id:"+ id +" Tipo:"+Pedido.class.getName()));
 	}

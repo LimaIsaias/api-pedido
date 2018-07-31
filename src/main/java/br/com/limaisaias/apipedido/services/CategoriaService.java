@@ -20,7 +20,7 @@ public class CategoriaService {
 		return repository.findAll();
 	}
 
-	public Categoria findByID(Integer id) throws ObjectNotFoundException {
+	public Categoria find(Integer id) throws ObjectNotFoundException {
 		Optional<Categoria> retorno = repository.findById(id);
 		return retorno.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado ! Id:" + id + " Tipo:" + Categoria.class.getName()));
@@ -28,6 +28,11 @@ public class CategoriaService {
 
 	public Categoria insert(Categoria obj) {
 		obj.setId(null);
+		return repository.save(obj);
+	}
+
+	public Categoria update(Categoria obj) {
+		find(obj.getId());
 		return repository.save(obj);
 	}
 

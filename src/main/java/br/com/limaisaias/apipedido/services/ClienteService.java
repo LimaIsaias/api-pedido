@@ -21,7 +21,7 @@ public class ClienteService {
 		return repository.findAll();
 	}
 
-	public Cliente findByID(Integer id) {
+	public Cliente find(Integer id) {
 		Optional<Cliente> retorno = repository.findById(id);
 		return retorno.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado ! Id:"+ id +" Tipo:"+Cliente.class.getName()));
 	}

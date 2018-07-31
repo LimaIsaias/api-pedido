@@ -20,15 +20,15 @@ public class ClienteResource {
 	private ClienteService service;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ResponseEntity<?> findAll() {
+	public ResponseEntity<List<Cliente>> findAll() {
 		List<Cliente> retorno = service.findAll();
 		return ResponseEntity.ok().body(retorno);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<?> findById(@PathVariable Integer id) {
+	public ResponseEntity<Cliente> findById(@PathVariable Integer id) {
 		Cliente retorno;
-		retorno = service.findByID(id);
+		retorno = service.find(id);
 		return ResponseEntity.ok().body(retorno);
 	}
 

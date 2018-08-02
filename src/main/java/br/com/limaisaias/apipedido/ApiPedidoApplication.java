@@ -54,6 +54,12 @@ public class ApiPedidoApplication implements CommandLineRunner {
 
 		Categoria categoria1 = new Categoria(null, "Informatica");
 		Categoria categoria2 = new Categoria(null, "Escritorio");
+		Categoria categoria3 = new Categoria(null, "Casa");
+		Categoria categoria4 = new Categoria(null, "Carro");
+		Categoria categoria5 = new Categoria(null, "E-esports");
+		Categoria categoria6 = new Categoria(null, "Petshop");
+		Categoria categoria7 = new Categoria(null, "tatoo shoping");
+		Categoria categoria8 = new Categoria(null, "pappers");
 
 		categoria1.getProdutos().addAll(Arrays.asList(produto1, produto2, produto3));
 		categoria2.getProdutos().add(produto2);
@@ -77,7 +83,8 @@ public class ApiPedidoApplication implements CommandLineRunner {
 		Endereco endereco1 = new Endereco(null, "Themberge", "19", "Teste2", "60335480", cliente, cidade2);
 		cliente.getEnderecos().addAll(Arrays.asList(endereco, endereco1));
 		// Persistence
-		categoriaRepository.saveAll(Arrays.asList(categoria1, categoria2));
+		categoriaRepository.saveAll(Arrays.asList(categoria1, categoria2, categoria3, categoria4, categoria5,
+				categoria6, categoria7, categoria8));
 		categoriaRepository.flush();
 		produtoRepository.saveAll(Arrays.asList(produto1, produto2, produto3));
 		produtoRepository.flush();

@@ -59,9 +59,9 @@ public class Cliente implements Serializable {
 	private Set<String> telefones = new HashSet<>();
 
 	@JsonBackReference
-	@OneToMany(mappedBy="cliente")
+	@OneToMany(mappedBy = "cliente")
 	private List<Pedido> pedidos = new ArrayList<>();
-	
+
 	public Cliente() {
 	}
 
@@ -71,7 +71,7 @@ public class Cliente implements Serializable {
 		this.nome = nome;
 		this.email = email;
 		this.cpfCnpj = cpfCnpj;
-		this.tipo = tipo;
+		this.tipo = (tipo == null) ? null : tipo;
 	}
 
 }

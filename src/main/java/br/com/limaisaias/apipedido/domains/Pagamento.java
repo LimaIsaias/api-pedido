@@ -3,6 +3,8 @@ package br.com.limaisaias.apipedido.domains;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -29,7 +31,9 @@ public abstract class Pagamento implements Serializable {
 
 	@Id
 	private Integer id;
-	private Integer estado;
+
+	@Enumerated(EnumType.STRING)
+	private EstadoPagamento estado;
 
 	@JsonBackReference
 	@OneToOne
@@ -43,7 +47,7 @@ public abstract class Pagamento implements Serializable {
 	public Pagamento(Integer id, EstadoPagamento estado, Pedido pedido) {
 		super();
 		this.id = id;
-		this.estado = (estado == null) ? null : estado.getCod();
+		this.estado = (estado == null) ? null : estado;
 		this.pedido = pedido;
 	}
 }

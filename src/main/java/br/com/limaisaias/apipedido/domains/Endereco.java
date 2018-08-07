@@ -35,8 +35,9 @@ public class Endereco implements Serializable {
 
 	private String complemento;
 
-	private String cep;
+	private String bairro;
 
+	private String cep;
 
 	@JsonBackReference
 	@ManyToOne
@@ -49,14 +50,15 @@ public class Endereco implements Serializable {
 
 	public Endereco() {
 	}
-	
-	public Endereco(Integer id, String logradouro, String numero, String complemento, String cep, Cliente cliente,
-			Cidade cidade) {
+
+	public Endereco(Integer id, String logradouro, String numero, String complemento, String bairro, String cep,
+			Cliente cliente, Cidade cidade) {
 		super();
 		this.id = id;
 		this.logradouro = logradouro;
 		this.numero = numero;
 		this.complemento = complemento;
+		this.bairro = bairro;
 		this.cep = cep;
 		this.cliente = cliente;
 		this.cidade = cidade;

@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.limaisaias.apipedido.domains.Cliente;
 import br.com.limaisaias.apipedido.dto.ClienteDTO;
@@ -36,7 +37,8 @@ public class ClienteService {
 		obj.setId(null);
 		return repository.save(obj);
 	}
-
+	
+	@Transactional
 	public Cliente update(Cliente obj) {
 		Cliente objNew = find(obj.getId());
 		updateData(objNew, obj);

@@ -79,8 +79,8 @@ public class ApiPedidoApplication implements CommandLineRunner {
 
 		Cliente cliente = new Cliente(null, "Cliente", "Cliente@email.com", "04442332371", TipoCliente.PESSOAFISICA);
 		cliente.getTelefones().addAll(Arrays.asList("32845427", "88314454"));
-		Endereco endereco = new Endereco(null, "Themberge", "19", "Teste", "60335480","Pirambas", cliente, cidade1);
-		Endereco endereco1 = new Endereco(null, "Themberge", "19", "Teste2", "60335480","Pirambas", cliente, cidade2);
+		Endereco endereco = new Endereco(null, "Themberge", "19", "Teste", "60335480", "Pirambas", cliente, cidade1);
+		Endereco endereco1 = new Endereco(null, "Themberge", "19", "Teste2", "60335480", "Pirambas", cliente, cidade2);
 		cliente.getEnderecos().addAll(Arrays.asList(endereco, endereco1));
 		// Persistence
 		categoriaRepository.saveAll(Arrays.asList(categoria1, categoria2, categoria3, categoria4, categoria5,

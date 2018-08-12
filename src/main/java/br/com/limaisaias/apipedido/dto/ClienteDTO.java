@@ -8,11 +8,13 @@ import javax.validation.constraints.NotEmpty;
 import org.hibernate.validator.constraints.Length;
 
 import br.com.limaisaias.apipedido.domains.Cliente;
+import br.com.limaisaias.apipedido.services.validations.ClienteUpdate;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@ClienteUpdate
 public class ClienteDTO implements Serializable {
 
 	private static final long serialVersionUID = -2536874001888292823L;
